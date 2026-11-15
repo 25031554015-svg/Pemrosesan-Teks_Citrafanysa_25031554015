@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<!-- saved from url=(0133)https://fhfil8qsuk-496ff2e9c6d22116-0-colab.googleusercontent.com/outputframe.html?vrz=colab-external_20261111-060054_RC00_1018888155 -->
+<html theme="dark" editor="Default Dark" style="overflow-y: auto;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script>
+  // Avoid arrow function syntax to stay ES5 compatible for the sake of googlebot.
+  window.addEventListener("message", function (message) {
+    if (message.source != window.parent) {
+      return;
+    }
+    if (message.data.sandboxed_iframe_evaluation) {
+      // Message is available in scope so evaluated script can get params from
+      // it.
+      window.currentMessage = message;
+      eval.call(null, message.data.sandboxed_iframe_evaluation);
+      delete window.currentMessage;
+    }
+  });
+</script>
+<style>html{--colab-primary-color:#0b57d0;--colab-primary-text-color:#1f1f1f;--colab-primary-text-color-rgb:31,31,31;--colab-secondary-text-color:#444746;--colab-primary-surface-color:#fff;--colab-secondary-surface-color:#f2f2f2;--colab-border-color:#c4c7c5;--colab-bold-border-color:#747775;--ansi-black:#000;--ansi-red:#8b0000;--ansi-green:#006400;--ansi-yellow:#cdcd00;--ansi-blue:#00e;--ansi-magenta:#cd00cd;--ansi-cyan:#4682b4;--ansi-gray:#e5e5e5;--ansi-bright-black:#7f7f7f;--ansi-bright-red:red;--ansi-bright-green:#00d000;--ansi-bright-yellow:#ff0;--ansi-bright-blue:#5c5cff;--ansi-bright-magenta:#f0f;--ansi-bright-cyan:#0ff;--ansi-bright-gray:#fff;--colab-anchor-color:var(--colab-primary-color);--colab-highlighted-surface-color:rgba(var(--colab-primary-text-color-rgb),0.08);--colab-icon-color:var(--colab-secondary-text-color);--colab-scrollbar-color:rgba(var(--colab-primary-text-color-rgb),0.24);--colab-scrollbar-hover-color:rgba(var(--colab-primary-text-color-rgb),0.48);--colab-scrollbar-active-color:rgba(var(--colab-primary-text-color-rgb),0.48);--colab-code-font-family:monospace;--colab-chrome-font-family:"Google Sans Text","Google Sans","Noto",sans-serif;--colab-chrome-font-size:14px}html[theme=dark]{--colab-primary-color:#a8c7fa;--colab-primary-text-color:#e3e3e3;--colab-primary-text-color-rgb:227,227,227;--colab-secondary-text-color:#c4c7c5;--colab-primary-surface-color:#282a2c;--colab-secondary-surface-color:#474747;--colab-border-color:#444746;--colab-bold-border-color:#8e918f;--ansi-black:#3f3f3f;--ansi-red:#ff7a88;--ansi-green:#57bb8a;--ansi-yellow:#ff6;--ansi-blue:#82b1ff;--ansi-magenta:#cd00cd;--ansi-cyan:#99bbd7;--ansi-gray:#e5e5e5;--ansi-bright-green:#0f0}html[theme=dark].embedded{--colab-secondary-surface-color:#202124;--colab-highlighted-surface-color:#202124;--colab-border-color:#3c4043}html[editor=Synthwave84]{--colab-anchor-color:#f97e72;--colab-primary-surface-color:#262335;--colab-secondary-surface-color:#49549539;--colab-highlighted-surface-color:#37294d99;--colab-border-color:#7059ab66;--ansi-red:#fe4450;--ansi-green:#72f1b8;--ansi-yellow:#f97e72;--ansi-blue:#03edf9;--ansi-magenta:#ff7edb;--ansi-cyan:#03edf9;--ansi-bright-red:#fe4450;--ansi-bright-green:#72f1b8;--ansi-bright-yellow:#fede5d;--ansi-bright-blue:#03edf9;--ansi-bright-magenta:#ff7edb;--ansi-bright-cyan:#03edf9}html{overflow-y:hidden}body{background:var(--colab-primary-surface-color);color:var(--colab-primary-text-color);font-family:var(--colab-chrome-font-family);font-size:var(--colab-chrome-font-size);line-height:1.24;font-weight:400;padding:7px 0 10px 5px;margin:0}h1,h2,h3,h4,h5,h6{color:var(--colab-primary-text-color);font-family:var(--colab-chrome-font-family);font-weight:700;margin-bottom:4px}p,ul{margin-bottom:6px;margin-top:6px}pre{margin-bottom:0;margin-top:0}a{color:var(--colab-anchor-color)}div.output_text,div.output_text pre,div.stream{display:inline}.execute_result>pre{display:block}.output_latex,.output_markdown{max-width:1016px}.output_markdown table,table.dataframe{border-collapse:collapse;border-spacing:0;border:none;table-layout:fixed}.output_markdown table thead,table.dataframe thead{border-bottom:1px solid var(--colab-border-color);font-family:var(--colab-code-font-family);text-align:right}.output_markdown table td,.output_markdown table th,.output_markdown table tr,table.dataframe td,table.dataframe th,table.dataframe tr{border:none;padding:.5em;white-space:normal}.output_markdown table th,table.dataframe th{font-weight:700}.output_markdown table th.col_heading,table.dataframe th.col_heading{text-align:right}.output_markdown table tbody tr:nth-child(odd),table.dataframe tbody tr:nth-child(odd){background:var(--colab-secondary-surface-color)}.output_markdown table tbody tr:hover,.output_markdown table tbody tr:nth-child(odd):hover,table.dataframe tbody tr:hover,table.dataframe tbody tr:nth-child(odd):hover{background-color:var(--colab-highlighted-surface-color)}.output_markdown table td,table.dataframe td{text-align:right}table.dataTable input.text_filter{width:95%}.output_markdown table th,table.dataTable th{text-align:left}.output_image>img{background-color:#fff;max-width:100%;vertical-align:bottom}.output_image>img.unconstrained{max-width:unset}.ansibold{font-weight:700}.ansiblack{color:#000}.ansired{color:darkred}.ansigreen{color:#006400}.ansiyellow{color:brown}.ansiblue{color:#00008b}.ansipurple{color:#9400d3}.ansicyan{color:#4682b4}.ansigray{color:gray}.ansibgblack{background-color:#000}.ansibgred{background-color:red}.ansibggreen{background-color:green}.ansibgyellow{background-color:#ff0}.ansibgblue{background-color:blue}.ansibgpurple{background-color:#f0f}.ansibgcyan{background-color:cyan}.ansibggray{background-color:gray}.output-error span{font-weight:400!important}.output-error pre{white-space:pre-wrap}.display_data .output_text pre,.execute_result .output_text pre{white-space:pre-wrap}input.raw_input{font-family:var(--colab-code-font-family);width:90%}input{background:var(--colab-primary-surface-color);border:1px solid var(--colab-bold-border-color);color:var(--colab-primary-text-color)}#output-area{display:flow-root}#output-area button.colab{background-color:var(--colab-secondary-surface-color);border:0;box-shadow:0 1px 3px 1px rgba(0,0,0,.15),0 1px 2px 0 rgba(0,0,0,.3);color:var(--colab-primary-text-color);font-family:var(--colab-chrome-font-family);font-size:11px;margin:0 4px 10px;padding:6px;text-transform:uppercase;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}#output-area button.colab:hover{background-color:var(--colab-highlighted-surface-color);cursor:pointer}#output-area .output-error button.error-details{background-color:#42a5f5;color:#fff}#output-area .output-error button.error-details:hover{background-color:#2196f3}#output-area .stdin-widget{-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;display:inline;font-family:var(--colab-code-font-family);margin-right:10px;margin-top:10px;min-width:250px;padding:1px}#output-area .stdin-widget-hidden{visibility:hidden}.error .collapsed .extraneous{display:none}.error .error-expander{-webkit-box-align:center;-webkit-align-items:center;-moz-box-align:center;-ms-flex-align:center;align-items:center;cursor:pointer;display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}.error .error-expander hr{border:0;border-top:1px solid var(--colab-bold-border-color);-webkit-box-flex:1;-webkit-flex-grow:1;-moz-box-flex:1;-ms-flex-positive:1;flex-grow:1;height:1px;margin:0 10px;padding:0}.error .error-expander hr:first-child{max-width:240px}.error .error-expander svg{fill:var(--colab-icon-color);height:24px;stroke:var(--colab-icon-color);width:24px}.lm-Widget.lm-mod-hidden{display:none!important}audio:focus{outline:none}::-webkit-scrollbar{height:12px;width:12px}::-webkit-scrollbar-button{height:0;width:0}::-webkit-scrollbar-corner{background:transparent}::-webkit-scrollbar-thumb{background-clip:content-box;background-color:var(--colab-scrollbar-color);border:2px solid transparent;border-radius:8px;min-height:28px;min-width:28px}::-webkit-scrollbar-thumb:hover{background-color:var(--colab-scrollbar-hover-color)}::-webkit-scrollbar-thumb:active{background-color:var(--colab-scrollbar-active-color)}@supports not (selector(::-webkit-scrollbar)){*{scrollbar-color:var(--colab-scrollbar-color) transparent}}.string-repr{display:inline}.string-repr .quote{opacity:75%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.string-repr pre{display:inline;white-space:pre-wrap;word-break:break-all}.string-repr button{color:var(--colab-primary-text-color);cursor:pointer;border:1px solid #767676;border-radius:2px;outline:none}.string-repr button.copy{background:transparent;border:none;margin-left:4px;opacity:0;padding:0;stroke:var(--colab-primary-text-color);-webkit-transition:opacity .2s;transition:opacity .2s}.string-repr button.copy svg{width:14px}.string-repr.hover button.copy,.string-repr:hover button.copy{opacity:1}.string-repr button.more{background-color:transparent;border-color:transparent;display:none;padding:0;-webkit-transition:background-color .2s,border-color .2s;transition:background-color .2s,border-color .2s}.string-repr.large button.more{display:inline}.string-repr.large.truncated button .collapse{display:none}.string-repr.large button .expand{display:none}.string-repr.large.truncated button .expand{display:inline}.string-repr.hover button.more,.string-repr:hover button.more{border-color:#767676}
+/*# sourceMappingURL=outputframe.css.map */
+//@ sourceURL=https://ssl.gstatic.com/colaboratory-static/common/45786f3b9aae5273f15ecf23183bdf59/outputframe.css</style><!--<base href="https://localhost:8080/">--><base href="."></head><body><div id="output-area"><span id="output-header"> </span><div id="output-body"><div class="stream"><div class="output_subarea output_text"><pre>Rata-rata panjang komentar: 797.52 karakter
+Rata-rata jumlah kata: 26.92 kata
+</pre></div></div><div class="display_data"><div class="output_subarea output_html rendered_html">
+  <div id="df-4dd6089b-12e0-4695-b75f-9fcfc99300d8" class="colab-df-container">
+    <div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>comment</th>
+      <th>comment_length</th>
+      <th>word_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>{'pk': '17971352505155671', 'text': 'Bijinya Wowo yg satu itu', 'created_at': '2026-09-21T19:53:53Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'mmas.dwi', 'owner_id': '2200135618', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/726336781_18540357292079619_3608617090417090427_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=103&amp;_nc_oc=Q6cZ2gF4xQkv2JCXYprcQPMZMKzc6zXeB2FPBA2Jz9Pxg_2x8dRlYvWkgqifUtvtDjb9AA0&amp;_nc_ohc=JDmpUDMrNDwQ7kNvwFVlRBY&amp;_nc_gid=DhZlLExIjKUUbEMpIu1wPA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQJykeKiC5v4J1XSaxjJVxRS_ZMWM9nMMyrOsZy6zDjM8Q&amp;oe=6AB75F0D&amp;_nc_sid=24d064'}</td>
+      <td>769</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>{'pk': '18337912315259992', 'text': 'Telor ceplok itu mah bukan telor dadar min', 'created_at': '2026-09-21T19:02:52Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'ameel_mela', 'owner_id': '8037507106', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.2885-19/426186725_895000362082602_8999177811684878019_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=106&amp;_nc_oc=Q6cZ2gF4xQkv2JCXYprcQPMZMKzc6zXeB2FPBA2Jz9Pxg_2x8dRlYvWkgqifUtvtDjb9AA0&amp;_nc_ohc=Jcj4uoQugB0Q7kNvwFtqW0j&amp;_nc_gid=DhZlLExIjKUUbEMpIu1wPA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKNeNvczX-OMCqxYXnuveutM_w6ufJ5F_HkhDX6S7cXiA&amp;oe=6AB76C29&amp;_nc_sid=24d064'}</td>
+      <td>786</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>{'pk': '18090431720195179', 'text': 'Telor ceplok itu sih', 'created_at': '2026-09-21T18:57:07Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'karakova_time', 'owner_id': '39271853058', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.2885-19/116015657_311182500291824_1564448140049315976_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=108&amp;_nc_oc=Q6cZ2gF4xQkv2JCXYprcQPMZMKzc6zXeB2FPBA2Jz9Pxg_2x8dRlYvWkgqifUtvtDjb9AA0&amp;_nc_ohc=aIM8WTzS1KoQ7kNvwE0CPD6&amp;_nc_gid=DhZlLExIjKUUbEMpIu1wPA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQIHiHAPhncei0g2R-pD1AdqfOkgRcXcEIpvg5fReV3vjQ&amp;oe=6AB75EC6&amp;_nc_sid=24d064'}</td>
+      <td>768</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>{'pk': '18094131329403503', 'text': 'Min itu bukan telur dadar', 'created_at': '2026-09-21T17:18:11Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'galih_purnama98', 'owner_id': '47605689034', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.82787-19/746261221_18101144828585035_4625107223504125604_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=107&amp;_nc_oc=Q6cZ2gF4xQkv2JCXYprcQPMZMKzc6zXeB2FPBA2Jz9Pxg_2x8dRlYvWkgqifUtvtDjb9AA0&amp;_nc_ohc=n3_dbe8Va5MQ7kNvwEqCTsC&amp;_nc_gid=DhZlLExIjKUUbEMpIu1wPA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQLWjs5ZF6EO-Vk1Unmza8j_csw931z3yathfFatimmVWA&amp;oe=6AB769DE&amp;_nc_sid=24d064'}</td>
+      <td>778</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>{'pk': '18113188631044454', 'text': 'Telor ceplok', 'created_at': '2026-09-21T16:34:17Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'agustin_charming', 'owner_id': '7985163204', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.2885-19/320882014_3284923845111968_8326008143479748459_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4zMjAuYzIifQ&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=108&amp;_nc_oc=Q6cZ2gF4xQkv2JCXYprcQPMZMKzc6zXeB2FPBA2Jz9Pxg_2x8dRlYvWkgqifUtvtDjb9AA0&amp;_nc_ohc=cCXDt5hTKSUQ7kNvwE4clq4&amp;_nc_gid=DhZlLExIjKUUbEMpIu1wPA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQK3_Y09R5S7puJO6RPyburBstAAZd4mf8T--KbWgHz_Hw&amp;oe=6AB781BD&amp;_nc_sid=24d064'}</td>
+      <td>762</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>{'pk': '18089651489689321', 'text': 'Padahal hanya mau buat telor ceplok!!!tapi berhasil membuat panik pulau2 terdekat  dan negara2 tetangga🤣🤣🤣udah ya jangan buat kepanikan lagi ...waktunya untuk tdur yg lelap!!!', 'created_at': '2026-09-21T16:26:54Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'baimkell', 'owner_id': '39673810522', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.find2-1.fna.fbcdn.net/v/t51.2885-19/573323465_1219825463302212_7278921664109726296_n.png?stp=dst-webp&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xNTAuYzIifQ&amp;_nc_ht=instagram.find2-1.fna.fbcdn.net&amp;_nc_cat=1&amp;_nc_oc=Q6cZ2gFhBXbAjIOOvNKTgUy8fRBwFe_4ioti5tX5sKpF9VHRCwYMt8DGwCe1O1t0-yqrk-c&amp;_nc_ohc=HwAxINjsSXMQ7kNvwFKnzef&amp;_nc_gid=P57RQG-iJYQGLERe4KKYLw&amp;edm=AIzrcHcBAAAA&amp;ccb=7-5&amp;ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.3-ccb7-5&amp;oh=00_AQLTCAjTnGvP-fnjeDfWJm8j5mcX6Z3ThggxNZ_sVjNsMQ&amp;oe=6AB77FEA&amp;_nc_sid=e9f0d8'}</td>
+      <td>952</td>
+      <td>43</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>{'pk': '18284852365294823', 'text': 'Gw bingung mau komen apa', 'created_at': '2026-09-21T16:14:25Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'leo_yz16', 'owner_id': '62225413664', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/806428547_17985568020077665_8910266729489210295_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=101&amp;_nc_oc=Q6cZ2gF4xQkv2JCXYprcQPMZMKzc6zXeB2FPBA2Jz9Pxg_2x8dRlYvWkgqifUtvtDjb9AA0&amp;_nc_ohc=dQI1RTKeG-sQ7kNvwGPllvB&amp;_nc_gid=DhZlLExIjKUUbEMpIu1wPA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKCinTAG-JiPgWvvkgkSsbSZ8G0edo3bg5AuIhTNDX3Lg&amp;oe=6AB776B6&amp;_nc_sid=24d064'}</td>
+      <td>770</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>{'pk': '18031175099675861', 'text': 'UDAH YAK JANGAN TANTRUM LAGI 😭', 'created_at': '2026-09-21T15:08:30Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'mamun96_', 'owner_id': '5780327549', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.find2-1.fna.fbcdn.net/v/t51.2885-19/573323465_1219825463302212_7278921664109726296_n.png?stp=dst-webp&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xNTAuYzIifQ&amp;_nc_ht=instagram.find2-1.fna.fbcdn.net&amp;_nc_cat=1&amp;_nc_oc=Q6cZ2gFhBXbAjIOOvNKTgUy8fRBwFe_4ioti5tX5sKpF9VHRCwYMt8DGwCe1O1t0-yqrk-c&amp;_nc_ohc=HwAxINjsSXMQ7kNvwFKnzef&amp;_nc_gid=P57RQG-iJYQGLERe4KKYLw&amp;edm=AIzrcHcBAAAA&amp;ccb=7-5&amp;ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.3-ccb7-5&amp;oh=00_AQLTCAjTnGvP-fnjeDfWJm8j5mcX6Z3ThggxNZ_sVjNsMQ&amp;oe=6AB77FEA&amp;_nc_sid=e9f0d8'}</td>
+      <td>806</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>{'pk': '17879370102628433', 'text': 'APAKAH SEDANG MENGGAMBARKAN MERINDUKAN IBUNYA', 'created_at': '2026-09-21T15:06:24Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'mamun96_', 'owner_id': '5780327549', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.find2-1.fna.fbcdn.net/v/t51.2885-19/573323465_1219825463302212_7278921664109726296_n.png?stp=dst-webp&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xNTAuYzIifQ&amp;_nc_ht=instagram.find2-1.fna.fbcdn.net&amp;_nc_cat=1&amp;_nc_oc=Q6cZ2gFhBXbAjIOOvNKTgUy8fRBwFe_4ioti5tX5sKpF9VHRCwYMt8DGwCe1O1t0-yqrk-c&amp;_nc_ohc=HwAxINjsSXMQ7kNvwFKnzef&amp;_nc_gid=P57RQG-iJYQGLERe4KKYLw&amp;edm=AIzrcHcBAAAA&amp;ccb=7-5&amp;ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.3-ccb7-5&amp;oh=00_AQLTCAjTnGvP-fnjeDfWJm8j5mcX6Z3ThggxNZ_sVjNsMQ&amp;oe=6AB77FEA&amp;_nc_sid=e9f0d8'}</td>
+      <td>821</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>{'pk': '18113056376098816', 'text': 'apakah sedang merindukan sang ibu nya', 'created_at': '2026-09-21T15:04:08Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'mamun96_', 'owner_id': '5780327549', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.find2-1.fna.fbcdn.net/v/t51.2885-19/573323465_1219825463302212_7278921664109726296_n.png?stp=dst-webp&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xNTAuYzIifQ&amp;_nc_ht=instagram.find2-1.fna.fbcdn.net&amp;_nc_cat=1&amp;_nc_oc=Q6cZ2gFhBXbAjIOOvNKTgUy8fRBwFe_4ioti5tX5sKpF9VHRCwYMt8DGwCe1O1t0-yqrk-c&amp;_nc_ohc=HwAxINjsSXMQ7kNvwFKnzef&amp;_nc_gid=P57RQG-iJYQGLERe4KKYLw&amp;edm=AIzrcHcBAAAA&amp;ccb=7-5&amp;ig_cache_key=YW5vbnltb3VzX3Byb2ZpbGVfcGlj.3-ccb7-5&amp;oh=00_AQLTCAjTnGvP-fnjeDfWJm8j5mcX6Z3ThggxNZ_sVjNsMQ&amp;oe=6AB77FEA&amp;_nc_sid=e9f0d8'}</td>
+      <td>813</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>{'pk': '18195167953382811', 'text': 'Ceplok bukan dadar😭😭', 'created_at': '2026-09-21T14:58:52Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'dyahandni22', 'owner_id': '3571650781', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.2885-19/38528851_606614069734519_2403902064678666240_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby43MjAuYzIifQ&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=107&amp;_nc_oc=Q6cZ2gF4xQkv2JCXYprcQPMZMKzc6zXeB2FPBA2Jz9Pxg_2x8dRlYvWkgqifUtvtDjb9AA0&amp;_nc_ohc=ggzSSJNiZw8Q7kNvwGLAVqL&amp;_nc_gid=DhZlLExIjKUUbEMpIu1wPA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKZb06UBZQQGgzn5YBkbg4J-_Vh8uT3n4XRKq5y44XhZQ&amp;oe=6AB77BA7&amp;_nc_sid=24d064'}</td>
+      <td>763</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>{'pk': '18112379306020658', 'text': 'nangis kmrn karna mau telur ceplok', 'created_at': '2026-09-21T14:35:28Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'pipiandinniiiii_', 'owner_id': '39311739739', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/792584935_18125120747307740_7134553350360812698_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=108&amp;_nc_oc=Q6cZ2gF4xQkv2JCXYprcQPMZMKzc6zXeB2FPBA2Jz9Pxg_2x8dRlYvWkgqifUtvtDjb9AA0&amp;_nc_ohc=o7yawBUxDAsQ7kNvwGzAvwL&amp;_nc_gid=DhZlLExIjKUUbEMpIu1wPA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQL-3LZ92grHXkgILN5MnTkxjdUqQtGFeFPSaNTQKTZGjw&amp;oe=6AB7601C&amp;_nc_sid=24d064'}</td>
+      <td>788</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>{'pk': '17866628580660511', 'text': 'Telur dadar apa telur ceplok', 'created_at': '2026-09-21T14:06:32Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'didiiriyadi16', 'owner_id': '2367714381', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.2885-19/445958767_1395968454444633_5158044434037277300_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=109&amp;_nc_oc=Q6cZ2gF4xQkv2JCXYprcQPMZMKzc6zXeB2FPBA2Jz9Pxg_2x8dRlYvWkgqifUtvtDjb9AA0&amp;_nc_ohc=A06ckkWA3HoQ7kNvwGe2e5b&amp;_nc_gid=DhZlLExIjKUUbEMpIu1wPA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKkSpurTLvsVhaolz1I3hmLRdck-MlZkHo3IT6CQskCsA&amp;oe=6AB77DB5&amp;_nc_sid=24d064'}</td>
+      <td>776</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>{'pk': '17989920513025178', 'text': 'Udah udah semua ini butuh ketenangan dalam hati🤣🤣🤣', 'created_at': '2026-09-21T13:52:13Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'wahyu_andriansyah1997', 'owner_id': '35047359731', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/726948443_18099931232175732_8720779961927137296_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=100&amp;_nc_oc=Q6cZ2gF4xQkv2JCXYprcQPMZMKzc6zXeB2FPBA2Jz9Pxg_2x8dRlYvWkgqifUtvtDjb9AA0&amp;_nc_ohc=kZp1Tfa7q0EQ7kNvwF-WXC5&amp;_nc_gid=DhZlLExIjKUUbEMpIu1wPA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKkdCWX3I57UKHmWAnUElvKm7MtnaCqrtW_cpzkcU-1zw&amp;oe=6AB7546E&amp;_nc_sid=24d064'}</td>
+      <td>809</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>{'pk': '18089388854657405', 'text': 'telur ceplok kali 🤣', 'created_at': '2026-09-21T13:50:52Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'mk_cho88', 'owner_id': '6189553852', 'owner_is_verified': True, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/812281415_18394817410201853_8322146017895603218_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=105&amp;_nc_oc=Q6cZ2gF4xQkv2JCXYprcQPMZMKzc6zXeB2FPBA2Jz9Pxg_2x8dRlYvWkgqifUtvtDjb9AA0&amp;_nc_ohc=jtSZdalqQaAQ7kNvwGXWpcg&amp;_nc_gid=DhZlLExIjKUUbEMpIu1wPA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKE4Ke6i4YCcw5yEl1ngkoaLweOvIac_0If3VZIlST6bQ&amp;oe=6AB75CF5&amp;_nc_sid=24d064'}</td>
+      <td>763</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>{'pk': '18086017232282179', 'text': 'Oalah pantes tantrum anaknya, laper ternyata', 'created_at': '2026-09-21T13:20:19Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'just.nura5', 'owner_id': '26414726415', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/670675975_18094677823886416_8920783454857219403_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby43MTQuYzIifQ&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=104&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=AvjS1NRO4vkQ7kNvwGfdHpP&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQLH5TCIJOezsarXvW5eV-W12_B86mWzQ7K_o6yuVrrUNQ&amp;oe=6AB75F92&amp;_nc_sid=24d064'}</td>
+      <td>791</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>{'pk': '18105606076953817', 'text': 'bener" jd jargon mbg...telur trs 😂', 'created_at': '2026-09-21T13:16:16Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'mualimah2112', 'owner_id': '76130105828', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/642546314_17874929883537829_6466168743073404188_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby40NDAuYzIifQ&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=101&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=fL2n1UCjUcEQ7kNvwFn8g9k&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKuq94VMBl9qr8mYYbKZZ1MTNydER4x6nCbemL7VEp-bw&amp;oe=6AB75964&amp;_nc_sid=24d064'}</td>
+      <td>783</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>{'pk': '18143226880603393', 'text': 'Tau gak sebelum gunung ini meletus, dia mau ngajarin kyak mna cara buat telor mata sapi, dan gunung Krakatau mengajar prabowo lihat aku menciptakan mbg dan tidak mahal, tapi buat kelen ketakutan para koruptor😂😂, seandainya aku meledak lebih dahsyat lagi maka kln pada mati semua di pulau Jawa 😂😭', 'created_at': '2026-09-21T12:59:47Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'muhammadhamsy', 'owner_id': '70219554860', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.2885-19/465312884_990514306166612_5754812047511950324_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby42MTIuYzIifQ&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=108&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=hIF_F1MelW8Q7kNvwG0wpW7&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQJ25EryfO1a758G-BJt5j_RilEfQqqszy63_Id0QJEGNw&amp;oe=6AB781F0&amp;_nc_sid=24d064'}</td>
+      <td>1042</td>
+      <td>68</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>{'pk': '18113438753517569', 'text': 'Kalo hanya minta telor ceplok knp meski setantrum itu nak', 'created_at': '2026-09-21T12:52:36Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'mrs_purwaningsih', 'owner_id': '1986218496', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.82787-19/560384000_18511138504066497_8419859670090889673_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=109&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=zH4wfo_bgaEQ7kNvwFii5sa&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQJRNOO6Cbf448KLi_F21n-2FXffsDweNHAga7urd_II9Q&amp;oe=6AB77698&amp;_nc_sid=24d064'}</td>
+      <td>810</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>{'pk': '17996611733823488', 'text': 'Telur Mata sapi', 'created_at': '2026-09-21T12:46:11Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'susinovi.yanti', 'owner_id': '78156588513', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/590818262_17848803189604514_698556664606373702_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=102&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=RKpDEQmen9EQ7kNvwH22HDK&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQLGx7C5j1idrXlVlAWBg4wC5FhbVXNUdgRO4StLIbU7sA&amp;oe=6AB7628B&amp;_nc_sid=24d064'}</td>
+      <td>766</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>{'pk': '17995838616041194', 'text': 'Kirain telur ceplok tadi', 'created_at': '2026-09-21T11:57:14Z', 'like_count': 1, 'reply_count': None, 'parent_id': None, 'owner_username': 'gigih_galang07', 'owner_id': '6914556090', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.82787-19/541894370_18327840493228091_7577213327494953202_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby41NDAuYzIifQ&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=111&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=p6bU02DSS9gQ7kNvwHJWfM4&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQI7tWuQj9gMAGtzkDthl_htgUo5Ur4IZEzvFmNlW6hCmQ&amp;oe=6AB78017&amp;_nc_sid=24d064'}</td>
+      <td>774</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>{'pk': '18102866930629795', 'text': 'Katanya telor ngk boleh di dadar nanti dicampur tepung', 'created_at': '2026-09-21T11:45:19Z', 'like_count': 1, 'reply_count': None, 'parent_id': None, 'owner_username': 'donnie2cis', 'owner_id': '2083614754', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.82787-19/745769356_18567124921070755_3665581892856278870_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=107&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=pvT7Q9yY5ugQ7kNvwHg0Ezp&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQJjiHOMbjUcNDKDczRQ0Wm3BTAde6IOIREItPtpwmRLbA&amp;oe=6AB77F38&amp;_nc_sid=24d064'}</td>
+      <td>801</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>{'pk': '18630094672024489', 'text': 'gunung pun kepingin telur dadar lah ini malah ada yang nyinggung mbg 🤣', 'created_at': '2026-09-21T11:39:45Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': '_edgar_al_khaalid_sanjaya', 'owner_id': '44560134009', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/812991238_18122058740486010_8235194591727230492_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=106&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=UnUCoDC_LksQ7kNvwHOqj4W&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKzR5EJtQOExchw-AVhnnnM8wWeXAvRabd3zxt_KwkbWg&amp;oe=6AB769A0&amp;_nc_sid=24d064'}</td>
+      <td>833</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>{'pk': '18115455892996320', 'text': 'Pasti nanti dinamain nya Kawah telor ceplok 😂', 'created_at': '2026-09-21T11:25:09Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'sigit_nurjaman_', 'owner_id': '6103701065', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.2885-19/445783585_417400304463867_6792512704972359572_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby43MjAuYzIifQ&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=103&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=SNeIU35rAPYQ7kNvwEt4Vmy&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKV6E7U8N5JKZ0jDFVB2cF4d-CdoA4MrBVDuiNTOHJxfA&amp;oe=6AB76DCF&amp;_nc_sid=24d064'}</td>
+      <td>793</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>{'pk': '17896172148671628', 'text': 'Sunny side up', 'created_at': '2026-09-21T11:13:06Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'naufalazad', 'owner_id': '1923521573', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.2885-19/118736658_316783379764921_6072639885503586683_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=101&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=Serrvytn_wIQ7kNvwHSp45i&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKMaBy5YMumVvFTaJUZ2obxeSoVypAbJXZJXvYXJEypmA&amp;oe=6AB77459&amp;_nc_sid=24d064'}</td>
+      <td>757</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>{'pk': '18140316310674522', 'text': 'Mirip telur ceplok atau telor mata sapi...', 'created_at': '2026-09-21T11:09:12Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'girijatinuswantoro', 'owner_id': '40425016543', 'owner_is_verified': True, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/717596133_18091530917344544_8913407556559346798_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby41OTIuYzIifQ&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=108&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=9EWoEIdHksYQ7kNvwFxB5Eh&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKzaZwma63vxfef_M-9e2pPggrg6P9yfEj_XDZOqL6JGA&amp;oe=6AB76D58&amp;_nc_sid=24d064'}</td>
+      <td>796</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>{'pk': '18103597373259304', 'text': '🤣kek mata sapi😂', 'created_at': '2026-09-21T10:34:26Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': '_fa_ch_ri_20005', 'owner_id': '764756173', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/752916654_18620121790020174_1104090003412636752_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby43MjAuYzIifQ&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=106&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=saTGep62kbUQ7kNvwEKcGiP&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQJhWuonUbgABDjwJoh5jLC2h5eZJVUqofRpHAH9Er7sfQ&amp;oe=6AB7523D&amp;_nc_sid=24d064'}</td>
+      <td>765</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>{'pk': '18093680696541433', 'text': 'Telur mata sapi perasaan dah sejak kapan telur dadar ada kuning di tengah nya ? 🤨', 'created_at': '2026-09-21T10:10:23Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': '_hidayat_d_jr', 'owner_id': '5542556205', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/729905977_18443660101188206_7913518998135968757_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=102&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=94XVGleDN7QQ7kNvwGt0m_o&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQLFmFJ0PZK8r7FdIl_A-1z8FfYkIuxgZzTtXZWBByRpCg&amp;oe=6AB780BD&amp;_nc_sid=24d064'}</td>
+      <td>831</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>{'pk': '18124481560894672', 'text': 'Krakatau mau harga telor stabil lagi 😂🔥', 'created_at': '2026-09-21T10:01:44Z', 'like_count': 2, 'reply_count': None, 'parent_id': None, 'owner_username': 'pramudya_1704', 'owner_id': '3923447767', 'owner_is_verified': True, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.2885-19/354428366_167786179460853_87190715586859109_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDY1LmMyIn0&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=109&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=FtpRk9HGq9oQ7kNvwGr7OTL&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQJEaliJ96f8P0nTFBGDd4_C9H4yiMK5MHqFO8JMfQekAw&amp;oe=6AB77BC2&amp;_nc_sid=24d064'}</td>
+      <td>783</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>{'pk': '18110746610163531', 'text': 'Telur ceplok itu bukan telur dadar😂', 'created_at': '2026-09-21T09:29:15Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'army_shanum', 'owner_id': '5524348174', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.2885-19/387759113_300493389424390_3647994752154464482_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby40ODEuYzIifQ&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=110&amp;_nc_oc=Q6cZ2gE1_qmeqEVaRdXAD_KJpr44D8gpUc9u4mjLKBH1XY90m-Fzu_3q7mHtYO5w2pbfZqE&amp;_nc_ohc=OlAV2yWj8hoQ7kNvwEuwmAJ&amp;_nc_gid=WdEDn_ZiKteYlYpGe3iUSA&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKPS1U4yCP5LjoXLSAeys3vEjDH_h_JP9tjv0OL-CoDUg&amp;oe=6AB7500D&amp;_nc_sid=24d064'}</td>
+      <td>779</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>{'pk': '18127232632691515', 'text': 'kamu mauu telor ya nak? besok ibu masakin telor😭', 'created_at': '2026-09-21T09:17:36Z', 'like_count': 1, 'reply_count': None, 'parent_id': None, 'owner_username': 'jeskorr_', 'owner_id': '63546369969', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/819207827_17987451342113970_4897366125437620903_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=106&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=bRgKTCV4BJwQ7kNvwHxJ9X_&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKdTnDhX6VtpJgktMw85vUwpOs5m-YFqVZ0G1NNX4uvDg&amp;oe=6AB754A4&amp;_nc_sid=24d064'}</td>
+      <td>794</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>{'pk': '18623303689007411', 'text': 'Dadar apa ceplok min? Klo dadar  biasanya digulung dlu 😂😂', 'created_at': '2026-09-21T08:37:59Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'bayu040589', 'owner_id': '7561023330', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.2885-19/64835776_1282627908571941_4583625605513216000_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=109&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=C_Jkx0flKcQQ7kNvwFy3Gtg&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKGSdvBm2QkyQm7caQ4XaCY7PJnFRMzEhxFZhcPbC9DFw&amp;oe=6AB7676C&amp;_nc_sid=24d064'}</td>
+      <td>801</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>{'pk': '18178410040434122', 'text': 'ternyata anak G krakatau kangen telor ceplok buatan Ibu G krakatau', 'created_at': '2026-09-21T08:26:07Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'irfnjunint', 'owner_id': '5983059323', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/734826688_18415866112195324_9006036884978014453_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=104&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=JdR5_l-Kcv0Q7kNvwFpHAXa&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQK4acgoFvgLN3yo5CbmZFQL4eHb8UgRLNMr66IrJ5IEZw&amp;oe=6AB763DE&amp;_nc_sid=24d064'}</td>
+      <td>813</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>{'pk': '18121490980905481', 'text': 'Jadi laper', 'created_at': '2026-09-21T08:22:09Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'amaliailmi_', 'owner_id': '3051100360', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.2885-19/316606509_1572006469880169_2786920936637605425_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=109&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=xo-3MZlV25MQ7kNvwFZ_NgZ&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQK6WaDRAWhgM_JaCBuaYsMQQfH6GylCtBH-rVYQYoOxZA&amp;oe=6AB77D7B&amp;_nc_sid=24d064'}</td>
+      <td>756</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>{'pk': '17980896128906026', 'text': 'Tp ada beberapa nyawa yang ikut dengan stabilnya anak krakatau', 'created_at': '2026-09-21T08:03:10Z', 'like_count': 2, 'reply_count': None, 'parent_id': None, 'owner_username': 'aylivhie_wisnu_saputri', 'owner_id': '3134076576', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/725985572_18474729091108577_2813488814598310141_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=105&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=qkcmUjzKUI4Q7kNvwEn--ec&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQLfYlGgPFfJwFhqYh_ucA9dy5VtYIwHWPOM1CZ6ENkxPg&amp;oe=6AB772D9&amp;_nc_sid=24d064'}</td>
+      <td>821</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>{'pk': '18118563647294122', 'text': 'Mungkin dia minta tumbal agar gak ngamuk lagi dan tumbalnya iyalah 8 jurnalis tdih dan sekarang anak Krakatau gak marah" lagi', 'created_at': '2026-09-21T07:58:55Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'iwanleonestaaaaaa', 'owner_id': '25313360849', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/801786241_18124994263840850_5190875540045174935_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=102&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=fejfVRPXNN0Q7kNvwHt0iz-&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQJ_uKpVRGsMnB-dl-05-WGmK7WKO9DQLHSVVvfIMdXnSw&amp;oe=6AB768EC&amp;_nc_sid=24d064'}</td>
+      <td>880</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>{'pk': '17958199725300810', 'text': 'Emas ituu', 'created_at': '2026-09-21T07:40:22Z', 'like_count': 1, 'reply_count': None, 'parent_id': None, 'owner_username': 'dontweee', 'owner_id': '1427036462', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.2885-19/476405051_605200302373419_353590146797432060_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=103&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=KDvTFO25AugQ7kNvwGTChRG&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQIsBrLNPqyEtVwUJGTEtWNxF9aJicvK38AGJl8qZNmqpA&amp;oe=6AB76609&amp;_nc_sid=24d064'}</td>
+      <td>750</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>{'pk': '17964858237192260', 'text': 'Pasti itu muntah kuning krn dengerin pidato presiden😭', 'created_at': '2026-09-21T07:12:07Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'jengmunir', 'owner_id': '3040417927', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.2885-19/295646556_3248127078843372_7826566798469614771_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby42NDAuYzIifQ&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=100&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=aBSe4T4OdSEQ7kNvwHaGJFG&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQLiV01Jr0eevLu9YIgEKc9z3dimoqRE76kwbpvS1ZgmdA&amp;oe=6AB78689&amp;_nc_sid=24d064'}</td>
+      <td>796</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>{'pk': '18343818598252981', 'text': 'Ceplok bangsat.. Dadar lu kira toping nasi warteg🗿', 'created_at': '2026-09-21T07:11:36Z', 'like_count': 1, 'reply_count': None, 'parent_id': None, 'owner_username': 'deniz_exell46', 'owner_id': '3152780562', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/634651724_18446085817108563_635515390675534671_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby44MTAuYzIifQ&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=103&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=Ja_N5mbmJ0gQ7kNvwENiNoS&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQLBVyTAJ5Xx63ZaNYwDD5Rv1ohPySIIEKbCrUFWKUsfNg&amp;oe=6AB77542&amp;_nc_sid=24d064'}</td>
+      <td>798</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>{'pk': '18070744286769246', 'text': 'Telur ceplok', 'created_at': '2026-09-21T07:03:28Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'astranoitamaharani', 'owner_id': '1971883267', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.2885-19/17596249_384643395251629_2987508169388851200_a.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=101&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=ryuZyMWlKYAQ7kNvwFbheki&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQINZ_WcHu827MIpp4G97p92Spi8W6WRtu7rZQiD5x3LrQ&amp;oe=6AB756FC&amp;_nc_sid=24d064'}</td>
+      <td>763</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>{'pk': '18140872609611039', 'text': 'dari atas kaya telur ceplok😭', 'created_at': '2026-09-21T06:49:27Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'danang_wis', 'owner_id': '5932598406', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/517407761_18366917314198407_1974148760425515819_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=103&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=mjNU5NxV07cQ7kNvwFghqi2&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQJJYPrhWCLOF3ucgKmp7E8Un8swZp3qAXtqFCHUK5eCEw&amp;oe=6AB76B3A&amp;_nc_sid=24d064'}</td>
+      <td>775</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>{'pk': '18069421376754299', 'text': 'Itu kan mirip telur ceplok, kenapa telur dadar ?. Telur MBG 🔥', 'created_at': '2026-09-21T06:41:32Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'ersandphillips', 'owner_id': '2992046174', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.2885-19/12797837_1008265632565439_980705425_a.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby40ODAuYzIifQ&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=111&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=gos_iOrkPsMQ7kNvwFDW9UE&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQI825fZh02ab6skJMxFdTSH6NAE9b46-75TXfUzHk-n2Q&amp;oe=6AB76E45&amp;_nc_sid=24d064'}</td>
+      <td>798</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>{'pk': '17880555357627600', 'text': 'TELUR DADAR MATAMU', 'created_at': '2026-09-21T06:13:30Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'kajicilik197', 'owner_id': '2316910774', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.82787-19/629567765_18508066069078775_4468456438081647319_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDY1LmMyIn0&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=111&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=Epj1B45L1RoQ7kNvwGOsy42&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQJwKVhJRNvvlG2NsNtcDCBkIPLP1xHtMGigBv4ecxl2Qw&amp;oe=6AB77B70&amp;_nc_sid=24d064'}</td>
+      <td>767</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>{'pk': '18651127849017985', 'text': 'Mau diceplok, di dadar apa disayang? 🥹🥹🥹 Eaakkk', 'created_at': '2026-09-21T06:12:21Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'fetris47790', 'owner_id': '1952545152', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.82787-19/615512732_18551713891065153_8047812059580902245_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=109&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=9gVY_upmuCYQ7kNvwG0Wsrc&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQJsrECggY_ITtYKZgzkttB96QwRb4gngdj5bYnaV2YjSA&amp;oe=6AB76846&amp;_nc_sid=24d064'}</td>
+      <td>795</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>{'pk': '18116716144951979', 'text': 'Lebih baik banyak berdoa ... Kejutan alam TDK bisa diprediksi....ini kyk peringatan semoga kita semua diberikan kesehatan. Keselamatan', 'created_at': '2026-09-21T05:54:22Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'pamong_jagad', 'owner_id': '60151949246', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf2-2.fna.fbcdn.net/v/t51.2885-19/468249105_2332250363791855_1094333272281497951_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby45NjAuYzIifQ&amp;_nc_ht=instagram.fjdf2-2.fna.fbcdn.net&amp;_nc_cat=107&amp;_nc_oc=Q6cZ2gFa4z5HIGzC49brsyp6NvfAQS_EGjOtvQiku1i4C1mdd_P7u9JJa-BUnfXEhuwPIgU&amp;_nc_ohc=dASblwz8uG8Q7kNvwFTPbpT&amp;_nc_gid=Aleu57IDsggtmiKsM6EL4g&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQKi9aGLIQJo1YAYBAOfmBVDGIWe1eAjzhQQpLT14fF1mA&amp;oe=6AB765AB&amp;_nc_sid=24d064'}</td>
+      <td>881</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>{'pk': '18191585269397242', 'text': 'Telur ceplok ituu', 'created_at': '2026-09-21T05:52:40Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'fildzahds', 'owner_id': '419206719', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/539233108_18531016621006720_7925230740674798093_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=104&amp;_nc_oc=Q6cZ2gE5G9TIPWdBBgwIVZ_shCHUyA7x69ixXH3u2Rup7YHtrHNe17rKRHDpzBwdQmw1LW4&amp;_nc_ohc=oFA20xjNqfYQ7kNvwEwkdVc&amp;_nc_gid=pLN4Z0aYlrv1eR2Pwlzm9w&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQJ4YXIDv3YKZtu3CdDL8btoNZM2Vxq2Eb6ZW0jvI1E0aQ&amp;oe=6AB750F5&amp;_nc_sid=24d064'}</td>
+      <td>762</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>{'pk': '18134806348724804', 'text': 'Mau goreng telur juga ngerepotin keluarga', 'created_at': '2026-09-21T05:40:02Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'lupa_arah_pulang01', 'owner_id': '19269557610', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/806317978_18132698962645611_8867184340066822827_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=103&amp;_nc_oc=Q6cZ2gE5G9TIPWdBBgwIVZ_shCHUyA7x69ixXH3u2Rup7YHtrHNe17rKRHDpzBwdQmw1LW4&amp;_nc_ohc=YtBiXl9JGh4Q7kNvwEugSxk&amp;_nc_gid=pLN4Z0aYlrv1eR2Pwlzm9w&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQLBe1KRHU33vnPkCyYAMpxA-rLhOyIrIrtH2B7XznP2qg&amp;oe=6AB75D8A&amp;_nc_sid=24d064'}</td>
+      <td>797</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>{'pk': '18101725859341283', 'text': 'Jika itu benar .. Masyaallah 🤲🏼', 'created_at': '2026-09-21T05:37:40Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'ninanamina03', 'owner_id': '39461994839', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.82787-19/683810449_18106355735314840_2656603837417300492_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=104&amp;_nc_oc=Q6cZ2gE5G9TIPWdBBgwIVZ_shCHUyA7x69ixXH3u2Rup7YHtrHNe17rKRHDpzBwdQmw1LW4&amp;_nc_ohc=yPVbEwxgDOUQ7kNvwEwuPSA&amp;_nc_gid=pLN4Z0aYlrv1eR2Pwlzm9w&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQI6sXM-fq7nJQnFX9vqGba-ZU2_GVRUr8Eq_fV0wRheXg&amp;oe=6AB77708&amp;_nc_sid=24d064'}</td>
+      <td>781</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>{'pk': '18370040962209824', 'text': 'kok bisa gitu yaaa 😭😭😭😭😭', 'created_at': '2026-09-21T05:33:13Z', 'like_count': 0, 'reply_count': None, 'parent_id': None, 'owner_username': 'fhit090806', 'owner_id': '59143520074', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.2885-19/484988609_1697707047763961_3492154117996086050_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby43MjAuYzIifQ&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=105&amp;_nc_oc=Q6cZ2gE5G9TIPWdBBgwIVZ_shCHUyA7x69ixXH3u2Rup7YHtrHNe17rKRHDpzBwdQmw1LW4&amp;_nc_ohc=0cde8m3M50oQ7kNvwEDcTWV&amp;_nc_gid=pLN4Z0aYlrv1eR2Pwlzm9w&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQJ3A0Gs42FjMzs8Kj_YG0X-dTTRC4lmDQ2Tqh_KcYjucQ&amp;oe=6AB74F14&amp;_nc_sid=24d064'}</td>
+      <td>769</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>{'pk': '18111328948925868', 'text': 'Masyaallah', 'created_at': '2026-09-21T05:06:12Z', 'like_count': 2, 'reply_count': None, 'parent_id': None, 'owner_username': 'dithaip99', 'owner_id': '1992688406', 'owner_is_verified': False, 'owner_profile_pic_url': 'https://instagram.fjdf7-1.fna.fbcdn.net/v/t51.2885-19/92270456_886153821845362_7427910020173398016_n.jpg?stp=dst-jpg_e0_s150x150_tt6&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby41MjEuYzIifQ&amp;_nc_ht=instagram.fjdf7-1.fna.fbcdn.net&amp;_nc_cat=110&amp;_nc_oc=Q6cZ2gE5G9TIPWdBBgwIVZ_shCHUyA7x69ixXH3u2Rup7YHtrHNe17rKRHDpzBwdQmw1LW4&amp;_nc_ohc=y-Xmyx70k8YQ7kNvwHJ_Tcl&amp;_nc_gid=pLN4Z0aYlrv1eR2Pwlzm9w&amp;edm=AHfyv3wBAAAA&amp;ccb=7-5&amp;oh=00_AQLQjyDoVr8b6jM6JHQoSCbihFlOwGGX8QONFWxOPnd6GA&amp;oe=6AB75C2B&amp;_nc_sid=24d064'}</td>
+      <td>751</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-4dd6089b-12e0-4695-b75f-9fcfc99300d8')" title="Convert this dataframe to an interactive table." style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"></path>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script type="">
+      const buttonEl =
+        document.querySelector('#df-4dd6089b-12e0-4695-b75f-9fcfc99300d8 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-4dd6089b-12e0-4695-b75f-9fcfc99300d8');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    </div>
+  </div>
+</div></div></div><span id="output-footer"></span></div></body></html>
